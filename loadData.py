@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
 
 
 '''
@@ -41,4 +42,15 @@ def loadData(path, preprocess=False, univariate=False, column_select=0):
     # Xtr, Xtest, Ytr, Ytest = train_test_split(X, Y, test_size=0.2)
     return Xtr, Xtest, Ytr, Ytest
 
-# X, Y = loadData('Concrete_Data.xls', preprocess=True)
+# for col in range(8):
+#     Xtr1, Xt1, Ytr, Yt = loadData('Concrete_Data.xls', preprocess=True, univariate=True, column_select=col)
+#     Xtr1 = np.delete(Xtr1, 0, axis=1).T[0]
+#     Xt1 = np.delete(Xt1, 0, axis=1).T[0]
+#     X1 = np.concatenate([Xtr1, Xt1])
+#     Xtr, Xt, Ytr, Yt = loadData('Concrete_Data.xls', preprocess=False, univariate=True, column_select=col)
+#     Xtr = np.delete(Xtr, 0, axis=1).T[0]
+#     Xt = np.delete(Xt, 0, axis=1).T[0]
+#     X = np.concatenate([Xtr, Xt])
+#     plt.hist(X1, color='r')
+#     plt.hist(X, color='b')
+#     plt.show()

@@ -13,12 +13,12 @@ def main():
     EVTr = []
     EVTest = []
     for col in range(8):
-        print(col)
         np.random.seed(165)
         Xtr, Xtest, Ytr, Ytest = loadData('Concrete_Data.xls', univariate=True, preprocess=False, column_select=col)
         (n, d) = Xtr.shape
         starttime = time.time()
         w, t = trainSGD(Xtr, Ytr, 10000, .0001)
+        print(col, w[0])
         endtime = time.time()
         trainLoss, trainVarExp = test(Xtr, Ytr, w)
         testLoss, testVarExp = test(Xtest, Ytest, w)
@@ -35,11 +35,11 @@ def main():
         plt.scatter(x, Ytr, s=1, alpha=0.5, c='b')
         plt.scatter(x, predictions, s=1, alpha=0.1, c='r')
         plt.show()
-
     np.random.seed(165)
     Xtr, Xtest, Ytr, Ytest = loadData('Concrete_Data.xls', univariate=False, preprocess=False)
     starttime = time.time()
     w, t = trainSGD(Xtr, Ytr, 10000, .0001)
+    print("Multinon", w[0])
     endtime = time.time()
     trainLoss, trainVarExp = test(Xtr, Ytr, w)
     testLoss, testVarExp = test(Xtest, Ytest, w)
@@ -74,12 +74,12 @@ def main():
     EVTest = []
     timeElapsed = []
     for col in range(8):
-        print(col)
         np.random.seed(165)
         Xtr, Xtest, Ytr, Ytest = loadData('Concrete_Data.xls', univariate=True, preprocess=True, column_select=col)
         (n, d) = Xtr.shape
         starttime = time.time()
         w, t = trainSGD(Xtr, Ytr, 10000, .0001)
+        print(col, w[0])
         endtime = time.time()
         trainLoss, trainVarExp = test(Xtr, Ytr, w)
         testLoss, testVarExp = test(Xtest, Ytest, w)
@@ -96,11 +96,11 @@ def main():
         plt.scatter(x, Ytr, s=1, alpha=0.5, c='b')
         plt.scatter(x, predictions, s=1, alpha=0.1, c='r')
         plt.show()
-
     np.random.seed(165)
     Xtr, Xtest, Ytr, Ytest = loadData('Concrete_Data.xls', univariate=False, preprocess=True)
     starttime = time.time()
     w, t = trainSGD(Xtr, Ytr, 10000, .0001)
+    print("MultiPP", w[0])
     endtime = time.time()
     trainLoss, trainVarExp = test(Xtr, Ytr, w)
     testLoss, testVarExp = test(Xtest, Ytest, w)
