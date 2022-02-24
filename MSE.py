@@ -16,10 +16,10 @@ def mse(w, X, y):
     for i in range(n):
         loss += (y[i] - np.dot(w, X[i]))**2
         grad_add = 2*(y[i]-np.dot(w, X[i]))*X[i]
-        gradient = np.sum(gradient, grad_add)
+        gradient += grad_add
     loss = loss/n
     gradient *= (-2/n)
-    return loss, gradient
+    return loss[0], gradient
 
 def mse_loss(w, X, y):
     (n, d) = X.shape
@@ -27,4 +27,4 @@ def mse_loss(w, X, y):
     for i in range(n):
         loss += (y[i] - np.dot(w, X[i])) ** 2
     loss = loss / n
-    return loss
+    return loss[0]
